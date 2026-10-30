@@ -1,0 +1,49 @@
+# ==============================================================================
+# Sample TFVARS Template - Copy to terraform.tfvars and customize
+# ==============================================================================
+aws_region  = "us-east-1"
+environment = "dev"
+
+vpc_cidr            = "10.0.0.0/16"
+public_subnet_cidrs = ["10.0.1.0/24", "10.0.2.0/24"]
+
+alb_sg_name  = "dev-alb-sg"
+task_sg_name = "dev-task-sg"
+
+ecr_repository_name = "my-custom-ecr-repo"
+secret_name         = "my-app/env-secrets"
+
+secret_values = {
+  DATABASE_PASSWORD = "change_me_in_tfvars"
+  API_SECRET_KEY    = "sk_test_12345"
+  SECRET_SOURCE     = "Custom TFVARS Secret"
+}
+
+execution_role_name = "myCustomExecutionRole"
+task_role_name      = "myCustomTaskRole"
+
+alb_name          = "my-custom-alb"
+target_group_name = "my-custom-tg"
+
+cluster_name   = "my-custom-cluster"
+service_name   = "my-custom-service"
+task_family    = "my-custom-task"
+container_name = "my-custom-container"
+container_port = 3000
+
+cpu           = "256"
+memory        = "512"
+desired_count = 2
+
+environment_variables = {
+  APP_NAME  = "My Custom App"
+  APP_ENV   = "development"
+  PORT      = "3000"
+  LOG_LEVEL = "debug"
+}
+
+secret_keys = [
+  "DATABASE_PASSWORD",
+  "API_SECRET_KEY",
+  "SECRET_SOURCE"
+]
